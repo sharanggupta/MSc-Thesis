@@ -1,0 +1,48 @@
+%!TEX root = ../thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Introduction
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+Most of the time, a software is a combination of different feature sets. In Monolithic Architecture, 
+all the features of a software reside in a single a single file. If any code updates are required, 
+then those updates cannot be accommodated independently. The developer must use the same code base, 
+make the required code changes, and then re-deploy the updated code. So even a single change requires 
+the whole code base to touched and re-deployed. 
+
+\smallskip
+
+The above traditional architecture comes with a major caveat, that is, beyond a point, scaling the application 
+becomes disproportionately difficult, with respect to time, human resources, computer resources and storage. 
+This is because of the atomic nature of resources, for example storage. A minor increase in the number of users 
+and consequent requests would require a new server to be provisioned, complete with storage, compute and memory. 
+This new resource would not be utilized to the fullest, until the number of users increases, thus increasing 
+the request load to an optimum amount. The biggest challenge though, is when the load is not balanced or well distributed, 
+and there may be a peak times requiring all the deployed resources, while during the remainder, those provisioned resources 
+lie idle, which is a huge waste of resources. 
+
+\smallskip
+
+Another commonly use architecture, called Microservice Architecture, has gained popularity over the recent years, 
+due to its ability to overcome some of the disadvantages of Monolithic Architecture. It involves splitting the application 
+into multiple "microservices", or smaller, fully independent components, which can operate, scale and be maintained, 
+independently of the other components. It can be said to be a mini app, complete with its own database as well. 
+This comes with its own challenges of complexity, and with synchronous update of state throughout the assorted services, 
+although it provides more control over the resources, and mitigates some of the scaling challenges. For example, 
+if a single microservice is running out of storage, there is no need to scale the infrastructure across all the services, 
+we can get away with scaling just the one we need. This raises an important conundrum though, of how much should the
+application be divided, as smaller, “microservices” offer a more fine-grained control, but proportionally increases the 
+complexity of the overall application. 
+
+\smallskip
+
+This leads us to the most recent, ever evolving and improving Serverless Architecture. A serverless architecture abstracts 
+the underlying infrastructure and offers a “pay as you use” model, wherein you always only pay for the resources you need. 
+If the load increases, it scales automatically, and you pay per request, and thus when the load decreases, you pay much less.
+
+\smallskip
+
+The main aim of this project will be to build a fully scalable architecture, using as many serverless features as possible, 
+such that there is no wasting of resources, and we are billed for exactly what we use. If we see a sudden growth of users 
+towards our platform, we should be able to serve them all, while if there are no visitors, our costs should be minimal.

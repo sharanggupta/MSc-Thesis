@@ -1,0 +1,148 @@
+%!TEX root = ../thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Literature Review
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Literature Review}%
+\chaptermark{Literature Review}%
+\label{chapter:literature_review}
+
+\section{Cloud Computing}
+Google cloud services and amazon web services have dominated the cloud computing space right from when it started gaining popularity. In August 2020, a report from Gartner[1] named both Google and Amazon in a group of 5 public cloud infrastructure providers that make up 80% of the IaaS market. We can draw many conclusions based on their feature by feature comparison, which would help us make a more informed decision. 
+
+\subsection{Function as a Service}
+
+At the heart of serverless, lies FaaS, or Function as a Service. In essence, FaaS allows us to borrow compute time with a millisecond granularity, thus adhering to the pay for only what you use principle of serverless. Being such an essential feature of serverless, all the popular cloud service providers offer this functionality in their own way. The most popular ones used are AWS Lambda functions offered by Amazon and Google Cloud Functions offered by Google. Depending on the use case, one or the other may be more suitable to our requirements. We can compare these two on a number of parameters, with pricing being at the forefront.
+
+\bigskip
+
+\begin{enumerate}[label=\Alph*.]
+  \item AWS v/s GCP Pricing comparison \\ 
+    \begin{longtable}{p{4cm}|p{3cm}|p{3cm}}
+    \caption[AWS v/s GCP Pricing comparison]{AWS v/s GCP Pricing comparison} % 
+    \label{tab:r1_r2_of_45} \\ 
+    Metric & \column{AWS} & \column{GCP} \\ \hline
+    Free Monthly Duration (GB-seconds) &
+    \row{\linewidth}{400,000} & 
+    \row{\linewidth}{400,000} \\ \hline
+    %---%
+    Free Monthly Requests &
+    \row{\linewidth}{1 Million} & 
+    \row{\linewidth}{2 Million} \\ \hline
+    %---%
+    Cost of Each Additional 1 Million  Requests &
+    \row{\linewidth}\$0.20 & 
+    \row{\linewidth}\$0.40 \\ \hline
+    %---%
+    Cost of Each Additional 1 GB-second &
+    \row{\linewidth}\$0.000016 & 
+    \row{\linewidth}\$0.0000125 \\ \hline
+    %---%
+    Duration granularity &
+    \row{\linewidth}{1ms} & 
+    \row{\linewidth}{100ms} \\ 
+    %---%
+    \end{longtable}
+    From the above pricing comparison, we can infer that while GCP is very generous with its free tier monthly requests, the cost of additional 1 million requests is double of that of AWS, whereas that of an extra 1GB-second is lower. For large scales, where we expect to exceed the free tier over vehemently, the additional cost for each million requests is half of that of GCP for AWS. Depending on the GB-second requirement, the right choice at scale varies on the memory and time requirements. For memory intensive tasks, which could also be time consuming, GCP is the more economical choice, whereas for lighter, numerous tasks, AWS shines. For our use case, we use cloud functions to fetch calorie data from an API depending on the recipe ingredients, and hence, being a light task, AWS could be a more viable choice at scale. However, for a smaller number of users and recipes, within the free tier, GCP would be a better option.
+    \\
+  \item AWS v/s GCP Scalability \\ \\
+    All serverless functions are built with scalability in mind, and as such, there is no difference in this aspect for GCP and AWS. Both of them use containers in the background to support FaaS, and hence, can easily spawn more or less containers depending on the workload automatically based on a script.
+    \\
+  \item AWS v/s GCP Concurrency \\ \\
+    Concurrency for serverless functions dictates how a second request is processed by a FaaS instance while an earlier request is already being processed. In the background, it works by spawning another container the moment a concurrent request is sent. AWS lambda offers a soft limit of 1000 simultaneous requests in a region, with an option to reserve or provision more beforehand.
+    \bigskip
+    GCP cloud functions have no advertised concurrency limit. Thus, as we can see, AWS provides us with customised concurrency management options, whereas GCP is vague on how concurrent requests are handled.
+    \\
+
+\subsection{Database as a Service}
+DataBase as a Service(DBaaS) also known as managed database service, is a cloud computing service that lets users access and use a cloud database system without purchasing and setting up their own hardware, installing their own database software, or managing the database themselves. The cloud provider takes care of everything from periodic upgrades to backups to ensuring that the database system remains available and secure 24/7. All the popular cloud service providers offer their own managed service for the same, with popular ones being DynamoDB from Amazon and Firebase from Google. We can compare the two on a number of parameters in order to contrast their use cases.
+
+\bigskip
+
+\begin{enumerate}[label=\arabic*.]
+  \item DynamoDB v/s Firebase Pricing comparison \\ 
+    \begin{longtable}{p{4cm}|p{4cm}|p{4cm}}
+    \caption[DynamoDB v/s Firebase Pricing comparison]{DynamoDB v/s Firebase Pricing comparison} % 
+    \label{tab:r1_r2_of_45} \\ 
+    Metric & \column{AWS DynamoDB} & \column{GCP Firestore} \\ \hline
+    Free Tier storage &
+    \row{\linewidth}{25 GB per month} & 
+    \row{\linewidth}{1 GB per day} \\ \hline
+    %---%
+    Free Tier Reads &
+    \row{\linewidth}{25 Million read requests} & 
+    \row{\linewidth}{50,000 read requests per day	} \\ \hline
+    %---%
+    Free Tier Writes &
+    \row{\linewidth}{-} & 
+    \row{\linewidth}{20,000 writes per day} \\ \hline
+    %---%
+    Free Tier Deletes &
+    \row{\linewidth}{-} & 
+    \row{\linewidth}{20,000 deletes per day} \\ \hline
+    %---%
+    Write Requests &
+    \row{\linewidth}\$1.25 per million write request units & 
+    \row{\linewidth}\$1.08 per million write requests \\ \hline
+    %---%
+    Read Requests &
+    \row{\linewidth}\$0.25 per million read request units & 
+    \row{\linewidth}\$0.36 per million read request units \\ \hline
+    %---%
+    Storage &
+    \row{\linewidth}\$0.25 per GB-month & 
+    \row{\linewidth}\$0.108 per GB-month \\ 
+    \end{longtable}
+    From the above pricing comparison, we can draw 2 major conclusions:
+
+    \begin{enumerate}[label=\arabic*.]
+      \item AWS DynamoDB is cheaper for read requests, but more expensive for writes
+      \item GCP Firestore is cheaper for data storage
+    \end{enumerate}
+    \\
+  \item DynamoDB v/s Firebase Performance comparison \\ \\
+    While comparing insertion performance for DynamoDB and Firestore is difficult due to its differences, we can compare the retrieval performance. Firestore, while nifty for querying, falls short with respect to querying as compared to DynamoDb coupled with a GraphQl API, which allows for very specific optimised queries.
+    \\
+  \item DynamoDB v/s FireBase Fault Tolerance comparison \\ \\
+    All the data is stored on solid-state disks (SSDs) and is \textbf{automatically replicated across multiple Availability Zones} in an AWS Region, providing built-in high availability and data \textbf{durability}[6].
+    \bigskip
+    While firestore does not explicitly mention any fault tolerance mechanism, they have stated certain limitations, within which we must operate[7].
+    \\
+\end{enumerate}
+
+\subsection{Storage as a Service}
+
+Storage as a Service or STaaS is cloud storage that you rent from a Cloud Service Provider (CSP) and that provides basic ways to access that storage. Enterprises, small and medium businesses, home offices, and individuals can use the cloud for multimedia storage, data repositories, data backup and recovery, and disaster recovery. There are also higher-tier managed services that build on top of STaaS, such as Database as a Service, in which you can write data into tables that are hosted through CSP resources.
+
+\bigskip
+
+
+The key benefit to STaaS is that you are offloading the cost and effort to manage data storage infrastructure and technology to a third-party CSP. This makes it much more effective to scale up storage resources without investing in new hardware or taking on configuration costs. You can also respond to changing market conditions faster. With just a few clicks you can rent terabytes or more of storage, and you don’t have to spin up new storage appliances on your own.
+\bigskip
+
+\begin{longtable}{p{4cm}|p{4cm}|p{4cm}}
+\caption[Amazon Simple Storage Service v/s Google Cloud Storage]{Amazon Simple Storage Service v/s Google Cloud Storage} % 
+\label{tab:r1_r2_of_45} \\ 
+Metric & \column{AWS S3} & \column{GCP Cloud Storage} \\ \hline
+Cost of storage &
+\row{\linewidth}\$0.021 per GB per month & 
+\row{\linewidth}\$0.020 per GB per month \\ \hline
+%---%
+Cost of Download &
+\row{\linewidth}\$0.05 per GB & 
+\row{\linewidth}\$0.12 per GB \\ \hline
+%---%
+Free Tier allowance &
+\row{\linewidth}{-} & 
+\row{\linewidth}{15 GB} \\ 
+\end{longtable}
+
+\bigskip
+
+Comparing the two offerings from Google and Amazon, we can see that while the cost of storage for the two is comparable, with S3 being minutely more expensive, the cost of download is significantly cheaper. It is important to note that S3 has tiers of fault tolerance available, and the one mentioned is the cheapest offering.
+
+\section{React v/s Angular v/s Vue}
+\section{GraphQL v/s  REST}
+\section{MaterialUI v/s  Bootstrap v/s Ant design}
+

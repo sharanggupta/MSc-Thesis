@@ -1,0 +1,85 @@
+\documentclass[sotonformat, final]{soton}
+% \documentclass[sotonformat, final, print]{soton}
+
+% \documentclass[singlespacing, 10pt, final]{soton}
+% \geometry{paperwidth=170mm, paperheight=240mm}
+
+% \documentclass[final]{soton}
+% \geometry{
+%   inner=1in, outer=1.2in, top=1in, bottom=1in,
+%   paperwidth=190mm, paperheight=250mm
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ADDITIONAL PACKAGES & CUSTOM COMMANDS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{input_custom_include}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% METADATA
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Modern Serverless Web Application Architecture}
+\author{Sharang Deepak Gupta}
+\date{September, 2021}
+\university{University of Southampton}
+\faculty{Software Engineering}
+\department{Msc Computer Science}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% INCLUDE ONLY
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \includeonly{}
+% \includeonly{chapters/introduction}
+
+\begin{document}
+\raggedbottom{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% FRONT MATTER
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter{}
+\pagestyle{plain}
+\input{input_frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% MAIN MATTER
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter{}
+\pagestyle{fancy}
+
+
+
+\include{chapters/introduction}
+
+\include{chapters/literature_review}
+\include{chapters/project_management}
+\include{chapters/system_analysis}
+\include{chapters/system_architecture}
+\include{chapters/implementation}
+\include{chapters/testing_and_evaluation}
+\include{chapters/reflection}
+
+\bookmarksetup{startatroot}
+\include{chapters/conclusion}
+\include{chapters/references}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% BACK MATTER
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter{}
+\cleardoublepage{}
+
+\include{chapters/appendix}
+
+\end{document}

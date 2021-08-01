@@ -1,0 +1,191 @@
+%!TEX root = ../thesis.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% The Operator Spectrum of the N=4 Super Yang-Mills theory
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{System Analysis}%
+\chaptermark{System Analysis}%
+\label{chapter:system_analysis}
+
+\section{Stakeholders of the system}
+The following stakeholders can be identified:
+
+\begin{enumerate}
+  \item Admin managing reports of users and recipes
+  \item Vegan Food Bloggers creating their profile and adding recipes
+  \item Logged in registered users allowed to like and comment on recipes
+  \item Visitors browsing recipes casually without registering
+\end{enumerate}
+
+\section{User requirements}
+
+\begin{enumerate}
+  \item Register with email id and password
+  \item Register and login with OAuth like facebook, instagram, google
+  \item Update personal profile to add a bio, description, and social links
+  \item Add a new recipe:
+    \begin{enumerate}[label=\alph*]
+      \item Admin managing reports of users and recipes
+      \item Vegan Food Bloggers creating their profile and adding recipes
+      \item Logged in registered users allowed to like and comment on recipes
+      \item Visitors browsing recipes casually without registering
+    \end{enumerate}
+  \item Update an existing recipe
+  \item Delete an existing recipe
+  \item Like recipes with a button
+  \item Browse for recipes, search and filter them
+\end{enumerate}
+
+\section{System requirements}
+
+\begin{enumerate}
+  \item Cognito or Auth service to manage users. No resources provisioned priorly, Amplify will manage auth by adding or removing users on demand.
+  \item Backend scalable database, NoSQL based to allow for dynamic structure like recipes, which can have any number of ingredients and steps. DynamoDB is a good choice. No priorly provisioned hardware/ram/compute, fully scalable.
+  \item Lambda functions based on python or javascript(nodejs) to hit the external nutritionix API in order to get calories based on recipe ingredients. Lowest tier lambda function should be suitable for our use case.
+  \item S3 storage in order to save static images or videos, for cheap and quick access. No priorly provisioned hardware/ram/compute, fully scalable. S3 infrequently accessed tier would suffice our needs. Can shift to a more performant tier upon scaling up and acquiring enough customers to generate revenue.
+\end{enumerate}
+
+\section{User Roles}
+
+A user story is the smallest unit of work in an agile framework. It’s an end goal, not a feature, expressed from the software user’s perspective.The purpose of a user story is to articulate how a piece of work will deliver a particular value back to the customer.
+
+\smallskip
+
+With respect to our application, we can identify a number of users and their corresponding end goals:
+
+\clearpage
+
+\begin{longtable}{p{2cm}|p{1.3cm}|p{3cm}|p{2cm}|p{1.3cm}|p{3cm}}
+\caption[User roles]{User roles} % 
+\label{tab:r1_r2_of_45} \\ 
+Story name & \column{As a/an} & \column{I want to be able to} & \column{So that} & \column{Priority} & \column{Acceptance criteria} \\ \hline
+Create recipe &
+\row{\linewidth}{Chef} & 
+\row{\linewidth}{Add a new vegan recipe with recipe name, category, cuisine, preparation time, servings, description, ingredient list and steps, along with photos and videos for the same} &
+\row{\linewidth}{A recipe is registered against my account, saved for everyone to view and engage with} &
+\row{\linewidth}{1} &
+\row{\linewidth}{A clean, intuitive form should be provided that caters to all the necessary fields needed for the recipe, with dynamic ingredients and steps accounted for} \\ \hline
+%---%
+View created recipes &
+\row{\linewidth}{Chef} &
+\row{\linewidth}{View my created recipes.} &
+\row{\linewidth}{Validate which recipes have been added by me} &
+\row{\linewidth}{1} &
+\row{\linewidth}{An interface to display the recipes added by a user should be provided} \\ \hline
+
+%---%
+Browse recipes &
+\row{\linewidth}{User} &
+\row{\linewidth}{Browse recipes, filter recipes, open recipe page} &
+\row{\linewidth}{Engage with the corresponding recipes} &
+\row{\linewidth}{1} &
+\row{\linewidth}{An interface to display recipes, along with a robust filtering and pagination technique, so that only requested recipes are shown} \\ \hline
+
+%---%
+Edit profile &
+\row{\linewidth}{User} &
+\row{\linewidth}{Edit my user profile bio, photo, and social links} &
+\row{\linewidth}{My latest information is available to all visitors in order to contact me} &
+\row{\linewidth}{2} &
+\row{\linewidth}{An interface to upload user photo, edit bio, add social links like instagram, facebook and twitter} \\ \hline
+
+%---%
+Popular recipes &
+\row{\linewidth}{User} &
+\row{\linewidth}{View the most popular recipes of a chef} &
+\row{\linewidth}{No time wasted in browsing all the recipes} &
+\row{\linewidth}{3} &
+\row{\linewidth}{A list of popular recipes shown on user profile page} \\  
+
+%---%
+Like recipes &
+\row{\linewidth}{User} &
+\row{\linewidth}{Like recipes} &
+\row{\linewidth}{My favourite recipes across all chefs are saved and easily accessible} &
+\row{\linewidth}{1} &
+\row{\linewidth}{A button to like a recipe should be available and upon liking a recipe, it should be added to a user’s liked recipe list} \\ \hline
+
+%---%
+Calorie count &
+\row{\linewidth}{User} &
+\row{\linewidth}{See calories for a recipe} &
+\row{\linewidth}{Make an informed decision and search for recipes fitting my diet plan} &
+\row{\linewidth}{2} &
+\row{\linewidth}{Calories for a recipe should be shown} \\ \hline
+
+%---%
+Report recipes &
+\row{\linewidth}{User} &
+\row{\linewidth}{Report a recipe for not being vegan or for spam content} &
+\row{\linewidth}{There is no clutter and inappropriate content} &
+\row{\linewidth}{3} &
+\row{\linewidth}{A report option for a recipe should be available} \\ \hline
+
+%---%
+Comment on recipes &
+\row{\linewidth}{User} &
+\row{\linewidth}{Comment on recipes} &
+\row{\linewidth}{Share my views about a recipe} &
+\row{\linewidth}{2} &
+\row{\linewidth}{An interface on the recipe details page allowing for commenting and viewing comments} \\  \hline
+
+%---%
+Delete comments &
+\row{\linewidth}{User} &
+\row{\linewidth}{Delete prior comments} &
+\row{\linewidth}{Remove comments I made by mistake} &
+\row{\linewidth}{2} &
+\row{\linewidth}{An option beside a comment for the user to delete their own comment} \\  \hline
+
+%---%
+Recent recipes &
+\row{\linewidth}{User} &
+\row{\linewidth}{Jump to recent recipes from the home page} &
+\row{\linewidth}{I can save time and browse only recent recipes} &
+\row{\linewidth}{3} &
+\row{\linewidth}{Recent recipes available as links on home page footer} \\  
+%---%
+Popular categories &
+\row{\linewidth}{User} &
+\row{\linewidth}{Jump to popular categories from the home page} &
+\row{\linewidth}{I can save time and browse only categories that are popular} &
+\row{\linewidth}{3} &
+\row{\linewidth}{Popular categories available as links on home page footer} \\ \hline
+
+
+%---%
+Filter users &
+\row{\linewidth}{Admin} &
+\row{\linewidth}{Filter users who have been reported} &
+\row{\linewidth}{Easily act on such users, either banning them or warning them} &
+\row{\linewidth}{2} &
+\row{\linewidth}{An admin interface to view reported users} \\  \hline
+
+%---%
+Remove user &
+\row{\linewidth}{Admin} &
+\row{\linewidth}{Remove user} &
+\row{\linewidth}{Remove users who have repeatedly broken rules} &
+\row{\linewidth}{2} &
+\row{\linewidth}{An admin interface allowing for removal of users} \\  \hline
+
+%---%
+Warn user &
+\row{\linewidth}{Admin} &
+\row{\linewidth}{Send a warning message} &
+\row{\linewidth}{So that users breaking rules are intimated about consequences of their posts} &
+\row{\linewidth}{2} &
+\row{\linewidth}{An admin interface allowing for sending messages to users} \\  \hline
+
+%---%
+Delete users &
+\row{\linewidth}{Admin} &
+\row{\linewidth}{Delete a recipe} &
+\row{\linewidth}{So that recipes which violate our terms can be removed from the site} &
+\row{\linewidth}{1} &
+\row{\linewidth}{An admin interface allowing for deleting reported recipes upon review} \\  
+
+\end{longtable}
+
+\clearpage

@@ -45,4 +45,61 @@ If the load increases, it scales automatically, and you pay per request, and thu
 
 The main aim of this project will be to build a fully scalable architecture, using as many serverless features as possible, 
 such that there is no wasting of resources, and we are billed for exactly what we use. If we see a sudden growth of users 
-towards our platform, we should be able to serve them all, while if there are no visitors, our costs should be minimal.
+towards our platform, we should be able to serve them all, while if there are no visitors, our costs should be minimal. 
+
+\textbf{Key Words}: Serverless, pay as you use, scalable architecture, dynamic load, idle resource utilization 
+
+\subsection{Problem Statement} 
+
+With so many providers and options for these services, it could get daunting for a new startup to decide on their technology stack and architecture, as the difference between success and failure for their venture could depend largely on how well it performs, and how economically. Thus, establishing an efficient, well defined standard for development, right from the selection of service providers to the appropriate tools to be used for the job is the need of the hour. 
+
+\subsection{Background} 
+
+In recent times, the technology stack used for software development has evolved from a simple, standard architecture and limited set of tools to a myriad of options, with each aspect of development and infrastructure offering choices with certain advantages and tradeoffs. These options, while good to have, have raised a conundrum, that is the abundance syndrome. Be it front-end frameworks, UI frameworks, backend frameworks, database engines or software architectures, the appropriate choice of technologies to choose is no longer an easy task.
+
+\smallskip 
+
+With the rise of cloud computing, large companies like Amazon, Google and Microsoft have jumped into the fray, initially offering infrastructure as a service, passing onto their customers a share into the economy of scales they are able to leverage, thus reducing the costs of operation. To outbid their competitors, these cloud service providers started offering more managed services, with complexities abstracted behind easy to use APIs, using their experience developing software at scale to provide improved management of common requirements like, for instance, databases. Eventually, in this competitive environment, these managed services evolved into the serverless architecture we know today.  
+
+\begin{figure}[!hb]
+\centering
+\caption[Cloud Computing market size]{Cloud Computing market size}%
+\label{fig:cloud_computing_market_size}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{img/cloud_computing_market_size}
+\end{figure} 
+
+As we can see from the above market research trends, the cloud computing market has been growing rapidly, and is expected to continue the trajectory in the long term. 
+
+Thus, leveraging this boom and evaluating the best provider and services is of utmost importance for any company wishing to stay with the trend in the future, which looks to be heading towards managed cloud services. 
+
+\section{Aims and Objectives} 
+
+With a view to evaluate cloud computing offerings from various cloud service providers, this project aims to develop a cloud native vegan recipe sharing website infinitely scalable, highly efficient and economical, using the pay for what you use model. 
+
+Furthermore, the objectives of the project are explicitly listed below:
+
+\begin{enumerate}[label=\arabic*.]
+  \item Building a full stack application, mimicking the most widespread use case for most web applications \textbf{(O1)}.
+  \item Allowing users to signup and login, add recipes, delete their recipes, comment on recipes, report recipes and also browse for recipes, with extensive filtering \textbf{(O2)}.
+  \item Using the most modern front-end technologies, based on React/Next and following best practices \textbf{(O3)}.
+  \item Building a complete serverless backend bit by bit, using serverless offerings from popular cloud services providers like AWS (Amazon Web Services) and GCP (Google Cloud Platform), thus demonstrating a fully scalable app \textbf{(O4)}.
+  \item Exploring modern data querying languages, GraphQl, in line with our main objective of reducing waste, that is querying for exactly what we need \textbf{(O5)}.
+  \item Exploring tools like Amplify to create a proof-of-concept template to make provisioning all the services easy and rapid \textbf{(O6)}.
+\end{enumerate}
+
+\section{Project Scope} 
+
+The project scope encompasses the analysis, design, implementation and evaluation of a cloud-native, 
+web-based system (as stated in the objectives) that is able to mimic the most widespread web applications, 
+like that of a blog \textbf{(O1)}. It would allow users to register, login, add recipes, search and filter for recipes, 
+edit their own recipes, as well as comment or like other recipes \textbf{(O2)}. They would also be able to report recipes 
+to the admin if they feel that a recipe is not vegan, or is in violation of any rules. This project, however, 
+does not allow for any orders for any of the posted recipes. It is not a food delivering or ecommerce application, 
+we do not facilitate payments to any of the recipe bloggers. This project will use AWS Amplify to provision the 
+resources needed for the backend, a GraphQL API and DynamoDB as the scalable serverless database \textbf{(O4, O5, O6)}.
+
+\section{Dissertation Structure} 
+
+For the sake of building a coherent dissertation report, this dissertation will follow a logical advancement approach, very similar to the development of the actual application. It begins with an abstract providing the gist of what we are trying to accomplish. The first chapter introduces the project to us, with details such as the aims and objectives of the project. This would immediately be followed by a literature review, where we justify our tech stack and choices with respect to cloud service providers. In the next chapter, we discuss about project management, that is the timeline of the project, schedule and software development methodology.
+
+

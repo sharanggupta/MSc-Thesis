@@ -3,7 +3,7 @@
 MSc dissertation, University of Southampton, September 2021.
 Degree: MSc Computer Science (Distinction). Author: Sharang Gupta.
 
-**[Read the dissertation (PDF, 62 pages)](thesis.pdf)**
+**[Read the dissertation (PDF, 62 pages)](thesis.pdf)** · [DOI: 10.5281/zenodo.23299984](https://doi.org/10.5281/zenodo.23299984)
 
 ## What it is about
 
@@ -37,4 +37,12 @@ The proof-of-concept code is in [theveganmanna](https://github.com/sharanggupta/
 
 To rebuild the PDF, compile `thesis.tex` with a standard LaTeX distribution (the main file includes the chapters in order).
 
-© 2021 Sharang Gupta. All rights reserved. If you cite this work, please link to this repository.
+## Cite this work
+
+Gupta, S. (2021). *Modern Serverless Web Application Architecture* [MSc dissertation, University of Southampton]. Zenodo. https://doi.org/10.5281/zenodo.23299984
+
+Permanent record with the PDF: [10.5281/zenodo.23299984](https://doi.org/10.5281/zenodo.23299984) (this DOI always points to the latest version; the first version is [10.5281/zenodo.23299985](https://doi.org/10.5281/zenodo.23299985)).
+
+## Licence
+
+The dissertation is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/): you may share and adapt it, including commercially, if you credit the author.

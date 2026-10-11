@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this dissertation, please cite it as below."
+title: "Modern Serverless Web Application Architecture"
+type: thesis
+authors:
+  - family-names: Gupta
+    given-names: Sharang
+    affiliation: "University of Southampton"
+date-released: 2021-09-01
+doi: 10.5281/zenodo.23299984
+license: CC-BY-4.0
+repository-code: "https://github.com/sharanggupta/MSc-Thesis"
+abstract: "A comparison of serverless offerings from the major cloud providers, and a standard recipe-sharing web application built as a scalable, economical proof of concept."
